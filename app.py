@@ -1,6 +1,13 @@
 import streamlit as st
 from chat_bot import get_response
 
+st.set_page_config(page_title="Bot Forge", page_icon='🛠️')
+
+_, c=st.columns([0.5,3.5])
+with c:
+    st.title("BotForge 🤖✨")
+st.markdown("##")
+
 if 'message_list' not in st.session_state:
     st.session_state['message_list'] = []
     st.session_state['disable_input'] = False
@@ -15,7 +22,8 @@ def show_message() :
 def restart_bot() :
     st.session_state['start_bot'] = True
 
-knowledge = st.text_area(label='', label_visibility='collapsed', height=200)
+st.markdown("##### Add Knowledge Content For The BOT !")
+knowledge = st.text_area(label='', label_visibility='collapsed', height=150)
 st.button("Initialize Your Bot", on_click=restart_bot)
 
 if st.session_state['start_bot'] :
