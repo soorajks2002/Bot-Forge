@@ -20,7 +20,7 @@ st.button("Initialize Your Bot", on_click=restart_bot)
 
 if st.session_state['start_bot'] :
     st.session_state['start_bot'] = False
-    system_content = {'role':'system', 'content':"You are a chat bot and have a limited knowledge. You should only respond to questions which are within your knowledge. Your knowledge is the following \n{knowledge}"}
+    system_content = {'role':'user', 'content':f"You are a chat bot with limited knowledge focused on {knowledge}\nHowever, if asked about topics outside this scope, please respond with 'out of my scope' and address questions associated with your knowledge."}
     assistant_content = {'role':'assistant', 'content':'Hello! How can I help you'}
     st.session_state['message_list'] = [system_content, assistant_content]
     show_message()  
